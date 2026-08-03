@@ -1566,3 +1566,61 @@ Traceback (most recent call last):
 
 sqlite3.OperationalError: no such table: news
 2026-08-03 22:48:38 | ERROR    | services.scheduler_service:job:26 - Scheduled job error [check]: no such table: events
+2026-08-03 22:52:40 | ERROR    | services.news_monitor:check:58 - News monitor error: no such table: news
+Traceback (most recent call last):
+
+  File "e:\API CALLS\ttd\ttd-assistant\app.py", line 143, in <module>
+
+  File "e:\API CALLS\ttd\ttd-assistant\app.py", line 139, in main
+
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 196, in run
+    return runner.run(main)
+           │      │   └ <coroutine object cmd_monitor_news at 0x00000221499C3740>
+           │      └ <function Runner.run at 0x0000022147E30900>
+           └ <asyncio.runners.Runner object at 0x0000022149B04830>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<cmd_monitor_news() running at e:\API CALLS\ttd\ttd-assistant\app.py:105> wait_for=<Future p...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x0000022147E2A480>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x0000022149B04830>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x0000022147E2A3E0>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x0000022147E30220>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2060, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x0000022147DA1D00>
+    └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000002214AE6F040>()>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000002214AE6F040>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000002214AE6F040>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000002214AE6F040>()>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\apscheduler\executors\base_py3.py", line 30, in run_coroutine_job
+    retval = await job.func(*job.args, **job.kwargs)
+                   │   │     │   │       │   └ <member 'kwargs' of 'Job' objects>
+                   │   │     │   │       └ <Job (id=news_monitor name=SchedulerService._wrap.<locals>.job)>
+                   │   │     │   └ <member 'args' of 'Job' objects>
+                   │   │     └ <Job (id=news_monitor name=SchedulerService._wrap.<locals>.job)>
+                   │   └ <member 'func' of 'Job' objects>
+                   └ <Job (id=news_monitor name=SchedulerService._wrap.<locals>.job)>
+
+  File "e:\API CALLS\ttd\ttd-assistant\services\scheduler_service.py", line 24, in job
+
+> File "e:\API CALLS\ttd\ttd-assistant\services\news_monitor.py", line 35, in check
+
+  File "e:\API CALLS\ttd\ttd-assistant\services\database_service.py", line 97, in get_all_news_titles
+    rows = conn.execute("SELECT title FROM news").fetchall()
+           │    └ <method 'execute' of 'sqlite3.Connection' objects>
+           └ <sqlite3.Connection object at 0x000002214AE6B4C0>
+
+sqlite3.OperationalError: no such table: news
+2026-08-03 22:52:40 | ERROR    | services.scheduler_service:job:26 - Scheduled job error [check]: no such table: events

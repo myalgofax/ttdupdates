@@ -1,5 +1,5 @@
 services:
-  - type: web
+  - type: worker
     name: ttd-news-monitor
     runtime: docker
     dockerfilePath: ./Dockerfile

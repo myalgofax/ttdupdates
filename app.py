@@ -27,7 +27,10 @@ async def cmd_monitor_news():
     scheduler.start()
     logger.info("News monitor running. Press Ctrl+C to stop.")
     try:
-        await news.check()
+        try:
+            await news.check()
+        except Exception as e:
+            logger.warning(f"Initial check failed, will retry on schedule: {e}")
         while True:
             await asyncio.sleep(1)
     except (KeyboardInterrupt, asyncio.CancelledError):
