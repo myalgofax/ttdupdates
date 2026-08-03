@@ -1,0 +1,44 @@
+browser:
+  headless: false
+  slow_mo: 100
+  timeout: 30000
+  viewport:
+    width: 1280
+    height: 800
+
+urls:
+  base: "https://ttdsevaonline.com"
+  login: "https://ttdsevaonline.com/Account/Login"
+  dashboard: "https://ttdsevaonline.com/Home/Index"
+  srivari_seva: "https://ttdsevaonline.com/GeneralSrivariSeva"
+  news_api: "https://ttdevasthanams.ap.gov.in/cms/api/universal-latest-updates?populate=*"
+
+polling:
+  default_interval: 60
+  near_release_interval: 30
+  near_release_window_minutes: 60
+
+notifications:
+  telegram: true
+  desktop: true
+  email: false
+
+logging:
+  level: "INFO"
+  rotation: "10 MB"
+  retention: "30 days"
+
+database:
+  path: "database/database.db"
+
+storage:
+  auth_path: "storage/auth.json"
+  cookies_path: "storage/cookies.json"
+
+scheduler:
+  health_check_hour: 8
+  health_check_minute: 0
+  cleanup_hour: 2
+  cleanup_minute: 0
+  screenshot_retention_days: 7
+  log_retention_days: 30

@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  ttd-monitor:
+    build: .
+    container_name: ttd-monitor
+    env_file: .env
+    environment:
+      - TZ=Asia/Kolkata
+      - HEADLESS=true
+    volumes:
+      - ./database:/app/database
+      - ./storage:/app/storage
+      - ./logs:/app/logs
+      - ./screenshots:/app/screenshots
+    restart: unless-stopped
+    command: ["monitor-booking"]

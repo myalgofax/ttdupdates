@@ -1,0 +1,1013 @@
+2026-08-03 21:52:03 | INFO     | services.database_service - Database initialized
+2026-08-03 21:53:30 | INFO     | services.database_service - Database initialized
+2026-08-03 21:53:33 | INFO     | services.browser_service - Browser started
+2026-08-03 21:53:33 | INFO     | services.auth_service - Validating session
+2026-08-03 21:53:34 | ERROR    | services.auth_service - Session validation error: Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://ttdsevaonline.com/Home/Index
+Call log:
+  - navigating to "https://ttdsevaonline.com/Home/Index", waiting until "domcontentloaded"
+
+Traceback (most recent call last):
+
+  File "e:\API CALLS\ttd\ttd-assistant\app.py", line 147, in <module>
+    main()
+    └ <function main at 0x00000194BBC74720>
+
+  File "e:\API CALLS\ttd\ttd-assistant\app.py", line 143, in main
+    asyncio.run(COMMANDS[sys.argv[1]]())
+    │       │   │        │   └ ['app.py', 'monitor-news']
+    │       │   │        └ <module 'sys' (built-in)>
+    │       │   └ {'login': <function cmd_login at 0x00000194BBC742C0>, 'validate-session': <function cmd_validate_session at 0x00000194BBC7440...
+    │       └ <function run at 0x00000194BA220F40>
+    └ <module 'asyncio' from 'C:\\Users\\mosin\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 196, in run
+    return runner.run(main)
+           │      │   └ <coroutine object cmd_monitor_news at 0x00000194BBA07740>
+           │      └ <function Runner.run at 0x00000194BA2B09A0>
+           └ <asyncio.runners.Runner object at 0x00000194BBB446E0>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<cmd_monitor_news() running at e:\API CALLS\ttd\ttd-assistant\app.py:99> cb=[_run_until_comp...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x00000194BA2AA520>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x00000194BBB446E0>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x00000194BA2AA480>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x00000194BA2B02C0>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2060, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000194BA221DA0>
+    └ <Handle Task.task_wakeup()>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup()>
+
+  File "e:\API CALLS\ttd\ttd-assistant\app.py", line 99, in cmd_monitor_news
+    await session.validate()
+          │       └ <function SessionService.validate at 0x00000194BB397740>
+          └ <services.auth_service.SessionService object at 0x00000194BBE082F0>
+
+> File "e:\API CALLS\ttd\ttd-assistant\services\auth_service.py", line 85, in validate
+    await dashboard.open()
+          │         └ <function DashboardPage.open at 0x00000194BB394FE0>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BD0981A0>
+
+  File "e:\API CALLS\ttd\ttd-assistant\pages\dashboard_page.py", line 14, in open
+    await self.navigate(self._dashboard_url)
+          │    │        │    └ 'https://ttdsevaonline.com/Home/Index'
+          │    │        └ <pages.dashboard_page.DashboardPage object at 0x00000194BD0981A0>
+          │    └ <function BasePage.navigate at 0x00000194BB395120>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BD0981A0>
+
+  File "e:\API CALLS\ttd\ttd-assistant\pages\base_page.py", line 11, in navigate
+    await self.page.goto(url, wait_until="domcontentloaded")
+          │    │    │    └ 'https://ttdsevaonline.com/Home/Index'
+          │    │    └ <function Page.goto at 0x00000194BB3704A0>
+          │    └ <Page url='chrome-error://chromewebdata/'>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BD0981A0>
+
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\async_api\_generated.py", line 8985, in goto
+    await self._impl_obj.goto(
+          │    │         └ <function Page.goto at 0x00000194BB307880>
+          │    └ <Page url='chrome-error://chromewebdata/'>
+          └ <Page url='chrome-error://chromewebdata/'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 551, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+                 │    │           │      └ <function locals_to_params at 0x00000194BB19FC40>
+                 │    │           └ <function Frame.goto at 0x00000194BB2D14E0>
+                 │    └ <Frame name= url='chrome-error://chromewebdata/'>
+                 └ <Page url='chrome-error://chromewebdata/'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 145, in goto
+    await self._channel.send("goto", locals_to_params(locals()))
+          │    │        │            └ <function locals_to_params at 0x00000194BB19FC40>
+          │    │        └ <function Channel.send at 0x00000194BB1E0AE0>
+          │    └ <playwright._impl._connection.Channel object at 0x00000194BD06C110>
+          └ <Frame name= url='chrome-error://chromewebdata/'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+                 │    │           └ <function Connection.wrap_api_call at 0x00000194BB1E2CA0>
+                 │    └ <playwright._impl._connection.Connection object at 0x00000194BBE09010>
+                 └ <playwright._impl._connection.Channel object at 0x00000194BD06C110>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+          │                       └ {'frames': [{'file': 'e:\\API CALLS\\ttd\\ttd-assistant\\pages\\base_page.py', 'line': 11, 'column': 0, 'function': 'Dashboar...
+          └ <function rewrite_error at 0x00000194BB1074C0>
+
+playwright._impl._errors.Error: Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://ttdsevaonline.com/Home/Index
+Call log:
+  - navigating to "https://ttdsevaonline.com/Home/Index", waiting until "domcontentloaded"
+
+2026-08-03 21:53:34 | INFO     | services.scheduler_service - News monitor scheduled every 300s
+2026-08-03 21:53:34 | INFO     | services.scheduler_service - Session validator scheduled every 300s
+2026-08-03 21:53:34 | INFO     | services.scheduler_service - Cleanup job scheduled
+2026-08-03 21:53:34 | INFO     | services.scheduler_service - Scheduler started
+2026-08-03 21:53:34 | INFO     | __main__ - News monitor running. Press Ctrl+C to stop.
+2026-08-03 21:53:34 | INFO     | services.news_monitor - Checking TTD news page
+2026-08-03 21:56:37 | INFO     | services.database_service - Database initialized
+2026-08-03 21:56:38 | INFO     | services.scheduler_service - News monitor scheduled every 300s
+2026-08-03 21:56:38 | INFO     | services.scheduler_service - Cleanup job scheduled
+2026-08-03 21:56:38 | INFO     | services.scheduler_service - Scheduler started
+2026-08-03 21:56:38 | INFO     | __main__ - News monitor running. Press Ctrl+C to stop.
+2026-08-03 21:56:38 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 21:56:44 | ERROR    | services.notification_service - Telegram notification failed: Chat not found
+2026-08-03 21:56:44 | INFO     | services.news_monitor - New news item detected: Srivari Seva
+2026-08-03 21:56:44 | ERROR    | services.notification_service - Telegram notification failed: Chat not found
+2026-08-03 21:56:44 | INFO     | services.news_monitor - New news item detected: Srivari Seva for Locals
+2026-08-03 21:57:37 | INFO     | services.database_service - Database initialized
+2026-08-03 21:57:38 | INFO     | services.scheduler_service - News monitor scheduled every 300s
+2026-08-03 21:57:38 | INFO     | services.scheduler_service - Cleanup job scheduled
+2026-08-03 21:57:38 | INFO     | services.scheduler_service - Scheduler started
+2026-08-03 21:57:38 | INFO     | __main__ - News monitor running. Press Ctrl+C to stop.
+2026-08-03 21:57:38 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 21:57:58 | INFO     | services.database_service - Database initialized
+2026-08-03 21:57:59 | INFO     | services.scheduler_service - News monitor scheduled every 300s
+2026-08-03 21:57:59 | INFO     | services.scheduler_service - Cleanup job scheduled
+2026-08-03 21:57:59 | INFO     | services.scheduler_service - Scheduler started
+2026-08-03 21:57:59 | INFO     | __main__ - News monitor running. Press Ctrl+C to stop.
+2026-08-03 21:57:59 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 21:58:34 | INFO     | services.news_monitor - Checking TTD news page
+2026-08-03 21:58:34 | INFO     | services.auth_service - Validating session
+2026-08-03 21:58:36 | ERROR    | services.auth_service - Session validation error: Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://ttdsevaonline.com/Home/Index
+Call log:
+  - navigating to "https://ttdsevaonline.com/Home/Index", waiting until "domcontentloaded"
+
+Traceback (most recent call last):
+
+  File "e:\API CALLS\ttd\ttd-assistant\app.py", line 147, in <module>
+
+  File "e:\API CALLS\ttd\ttd-assistant\app.py", line 143, in main
+    main()
+    └ <function main at 0x00000194BBC74720>
+
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 196, in run
+    return runner.run(main)
+           │      │   └ <coroutine object cmd_monitor_news at 0x00000194BBA07740>
+           │      └ <function Runner.run at 0x00000194BA2B09A0>
+           └ <asyncio.runners.Runner object at 0x00000194BBB446E0>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<cmd_monitor_news() running at e:\API CALLS\ttd\ttd-assistant\app.py:108> wait_for=<Future p...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x00000194BA2AA520>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x00000194BBB446E0>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x00000194BA2AA480>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x00000194BA2B02C0>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2060, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000194BA221DA0>
+    └ <Handle Task.task_wakeup()>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup()>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\apscheduler\executors\base_py3.py", line 30, in run_coroutine_job
+    retval = await job.func(*job.args, **job.kwargs)
+                   │   │     │   │       │   └ <member 'kwargs' of 'Job' objects>
+                   │   │     │   │       └ <Job (id=session_validator name=SchedulerService._wrap.<locals>.job)>
+                   │   │     │   └ <member 'args' of 'Job' objects>
+                   │   │     └ <Job (id=session_validator name=SchedulerService._wrap.<locals>.job)>
+                   │   └ <member 'func' of 'Job' objects>
+                   └ <Job (id=session_validator name=SchedulerService._wrap.<locals>.job)>
+
+  File "e:\API CALLS\ttd\ttd-assistant\services\scheduler_service.py", line 24, in job
+    await coro_fn()
+          └ <bound method SessionService.validate of <services.auth_service.SessionService object at 0x00000194BBE082F0>>
+
+> File "e:\API CALLS\ttd\ttd-assistant\services\auth_service.py", line 85, in validate
+    await dashboard.open()
+          │         └ <function DashboardPage.open at 0x00000194BB394FE0>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BD0FD450>
+
+  File "e:\API CALLS\ttd\ttd-assistant\pages\dashboard_page.py", line 14, in open
+    await self.navigate(self._dashboard_url)
+          │    │        │    └ 'https://ttdsevaonline.com/Home/Index'
+          │    │        └ <pages.dashboard_page.DashboardPage object at 0x00000194BD0FD450>
+          │    └ <function BasePage.navigate at 0x00000194BB395120>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BD0FD450>
+
+  File "e:\API CALLS\ttd\ttd-assistant\pages\base_page.py", line 11, in navigate
+    await self.page.goto(url, wait_until="domcontentloaded")
+          │    │    │    └ 'https://ttdsevaonline.com/Home/Index'
+          │    │    └ <function Page.goto at 0x00000194BB3704A0>
+          │    └ <Page url='chrome-error://chromewebdata/'>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BD0FD450>
+
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\async_api\_generated.py", line 8985, in goto
+    await self._impl_obj.goto(
+          │    │         └ <function Page.goto at 0x00000194BB307880>
+          │    └ <Page url='chrome-error://chromewebdata/'>
+          └ <Page url='chrome-error://chromewebdata/'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 551, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+                 │    │           │      └ <function locals_to_params at 0x00000194BB19FC40>
+                 │    │           └ <function Frame.goto at 0x00000194BB2D14E0>
+                 │    └ <Frame name= url='chrome-error://chromewebdata/'>
+                 └ <Page url='chrome-error://chromewebdata/'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 145, in goto
+    await self._channel.send("goto", locals_to_params(locals()))
+          │    │        │            └ <function locals_to_params at 0x00000194BB19FC40>
+          │    │        └ <function Channel.send at 0x00000194BB1E0AE0>
+          │    └ <playwright._impl._connection.Channel object at 0x00000194BD167920>
+          └ <Frame name= url='chrome-error://chromewebdata/'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+                 │    │           └ <function Connection.wrap_api_call at 0x00000194BB1E2CA0>
+                 │    └ <playwright._impl._connection.Connection object at 0x00000194BBE09010>
+                 └ <playwright._impl._connection.Channel object at 0x00000194BD167920>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+          │                       └ {'frames': [{'file': 'e:\\API CALLS\\ttd\\ttd-assistant\\pages\\base_page.py', 'line': 11, 'column': 0, 'function': 'Dashboar...
+          └ <function rewrite_error at 0x00000194BB1074C0>
+
+playwright._impl._errors.Error: Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://ttdsevaonline.com/Home/Index
+Call log:
+  - navigating to "https://ttdsevaonline.com/Home/Index", waiting until "domcontentloaded"
+
+2026-08-03 21:59:02 | INFO     | __main__ - Stopping news monitor
+2026-08-03 21:59:02 | INFO     | services.scheduler_service - Scheduler stopped
+2026-08-03 21:59:06 | INFO     | services.database_service - Database initialized
+2026-08-03 21:59:07 | INFO     | services.scheduler_service - News monitor scheduled every 60s
+2026-08-03 21:59:07 | INFO     | services.scheduler_service - Cleanup job scheduled
+2026-08-03 21:59:07 | INFO     | services.scheduler_service - Scheduler started
+2026-08-03 21:59:07 | INFO     | __main__ - News monitor running. Press Ctrl+C to stop.
+2026-08-03 21:59:07 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:00:07 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:01:00 | INFO     | __main__ - Stopping news monitor
+2026-08-03 22:01:00 | INFO     | services.scheduler_service - Scheduler stopped
+2026-08-03 22:01:03 | INFO     | services.database_service - Database initialized
+2026-08-03 22:01:04 | INFO     | services.scheduler_service - News monitor scheduled every 60s
+2026-08-03 22:01:04 | INFO     | services.scheduler_service - Cleanup job scheduled
+2026-08-03 22:01:04 | INFO     | services.scheduler_service - Scheduler started
+2026-08-03 22:01:04 | INFO     | __main__ - News monitor running. Press Ctrl+C to stop.
+2026-08-03 22:01:04 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:01:38 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:01:50 | INFO     | __main__ - Stopping news monitor
+2026-08-03 22:01:50 | INFO     | services.scheduler_service - Scheduler stopped
+2026-08-03 22:02:38 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:03:18 | INFO     | services.database_service - Database initialized
+2026-08-03 22:03:19 | INFO     | services.scheduler_service - News monitor scheduled every 60s
+2026-08-03 22:03:19 | INFO     | services.scheduler_service - Cleanup job scheduled
+2026-08-03 22:03:19 | INFO     | services.scheduler_service - Scheduler started
+2026-08-03 22:03:19 | INFO     | __main__ - News monitor running. Press Ctrl+C to stop.
+2026-08-03 22:03:19 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:03:34 | INFO     | services.news_monitor - Checking TTD news page
+2026-08-03 22:03:34 | INFO     | services.auth_service - Validating session
+2026-08-03 22:03:35 | ERROR    | services.auth_service - Session validation error: Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://ttdsevaonline.com/Home/Index
+Call log:
+  - navigating to "https://ttdsevaonline.com/Home/Index", waiting until "domcontentloaded"
+
+Traceback (most recent call last):
+
+  File "e:\API CALLS\ttd\ttd-assistant\app.py", line 147, in <module>
+
+  File "e:\API CALLS\ttd\ttd-assistant\app.py", line 143, in main
+    main()
+    └ <function main at 0x00000194BBC74720>
+
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 196, in run
+    return runner.run(main)
+           │      │   └ <coroutine object cmd_monitor_news at 0x00000194BBA07740>
+           │      └ <function Runner.run at 0x00000194BA2B09A0>
+           └ <asyncio.runners.Runner object at 0x00000194BBB446E0>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<cmd_monitor_news() running at e:\API CALLS\ttd\ttd-assistant\app.py:108> wait_for=<Future p...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x00000194BA2AA520>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x00000194BBB446E0>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x00000194BA2AA480>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x00000194BA2B02C0>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2060, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000194BA221DA0>
+    └ <Handle Task.task_wakeup()>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup()>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\apscheduler\executors\base_py3.py", line 30, in run_coroutine_job
+    retval = await job.func(*job.args, **job.kwargs)
+                   │   │     │   │       │   └ <member 'kwargs' of 'Job' objects>
+                   │   │     │   │       └ <Job (id=session_validator name=SchedulerService._wrap.<locals>.job)>
+                   │   │     │   └ <member 'args' of 'Job' objects>
+                   │   │     └ <Job (id=session_validator name=SchedulerService._wrap.<locals>.job)>
+                   │   └ <member 'func' of 'Job' objects>
+                   └ <Job (id=session_validator name=SchedulerService._wrap.<locals>.job)>
+
+  File "e:\API CALLS\ttd\ttd-assistant\services\scheduler_service.py", line 24, in job
+    await coro_fn()
+          └ <bound method SessionService.validate of <services.auth_service.SessionService object at 0x00000194BBE082F0>>
+
+> File "e:\API CALLS\ttd\ttd-assistant\services\auth_service.py", line 85, in validate
+    await dashboard.open()
+          │         └ <function DashboardPage.open at 0x00000194BB394FE0>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BD0FDBD0>
+
+  File "e:\API CALLS\ttd\ttd-assistant\pages\dashboard_page.py", line 14, in open
+    await self.navigate(self._dashboard_url)
+          │    │        │    └ 'https://ttdsevaonline.com/Home/Index'
+          │    │        └ <pages.dashboard_page.DashboardPage object at 0x00000194BD0FDBD0>
+          │    └ <function BasePage.navigate at 0x00000194BB395120>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BD0FDBD0>
+
+  File "e:\API CALLS\ttd\ttd-assistant\pages\base_page.py", line 11, in navigate
+    await self.page.goto(url, wait_until="domcontentloaded")
+          │    │    │    └ 'https://ttdsevaonline.com/Home/Index'
+          │    │    └ <function Page.goto at 0x00000194BB3704A0>
+          │    └ <Page url='chrome-error://chromewebdata/'>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BD0FDBD0>
+
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\async_api\_generated.py", line 8985, in goto
+    await self._impl_obj.goto(
+          │    │         └ <function Page.goto at 0x00000194BB307880>
+          │    └ <Page url='chrome-error://chromewebdata/'>
+          └ <Page url='chrome-error://chromewebdata/'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 551, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+                 │    │           │      └ <function locals_to_params at 0x00000194BB19FC40>
+                 │    │           └ <function Frame.goto at 0x00000194BB2D14E0>
+                 │    └ <Frame name= url='chrome-error://chromewebdata/'>
+                 └ <Page url='chrome-error://chromewebdata/'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 145, in goto
+    await self._channel.send("goto", locals_to_params(locals()))
+          │    │        │            └ <function locals_to_params at 0x00000194BB19FC40>
+          │    │        └ <function Channel.send at 0x00000194BB1E0AE0>
+          │    └ <playwright._impl._connection.Channel object at 0x00000194BD167E30>
+          └ <Frame name= url='chrome-error://chromewebdata/'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+                 │    │           └ <function Connection.wrap_api_call at 0x00000194BB1E2CA0>
+                 │    └ <playwright._impl._connection.Connection object at 0x00000194BBE09010>
+                 └ <playwright._impl._connection.Channel object at 0x00000194BD167E30>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+          │                       └ {'frames': [{'file': 'e:\\API CALLS\\ttd\\ttd-assistant\\pages\\base_page.py', 'line': 11, 'column': 0, 'function': 'Dashboar...
+          └ <function rewrite_error at 0x00000194BB1074C0>
+
+playwright._impl._errors.Error: Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://ttdsevaonline.com/Home/Index
+Call log:
+  - navigating to "https://ttdsevaonline.com/Home/Index", waiting until "domcontentloaded"
+
+2026-08-03 22:03:46 | INFO     | __main__ - Stopping news monitor
+2026-08-03 22:03:46 | INFO     | services.scheduler_service - Scheduler stopped
+2026-08-03 22:03:53 | INFO     | services.database_service - Database initialized
+2026-08-03 22:03:55 | INFO     | services.scheduler_service - News monitor scheduled every 60s
+2026-08-03 22:03:55 | INFO     | services.scheduler_service - Cleanup job scheduled
+2026-08-03 22:03:55 | INFO     | services.scheduler_service - Scheduler started
+2026-08-03 22:03:55 | INFO     | __main__ - News monitor running. Press Ctrl+C to stop.
+2026-08-03 22:03:55 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:03:56 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:03:57 | INFO     | services.news_monitor - New news item detected: Srivari Seva
+2026-08-03 22:03:57 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:03:57 | INFO     | services.news_monitor - New news item detected: Srivari Seva for Locals
+2026-08-03 22:04:54 | INFO     | __main__ - Stopping news monitor
+2026-08-03 22:04:54 | INFO     | services.scheduler_service - Scheduler stopped
+2026-08-03 22:04:57 | INFO     | services.database_service - Database initialized
+2026-08-03 22:04:58 | INFO     | services.scheduler_service - News monitor scheduled every 60s
+2026-08-03 22:04:58 | INFO     | services.scheduler_service - Cleanup job scheduled
+2026-08-03 22:04:58 | INFO     | services.scheduler_service - Scheduler started
+2026-08-03 22:04:58 | INFO     | __main__ - News monitor running. Press Ctrl+C to stop.
+2026-08-03 22:04:58 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:05:58 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:06:38 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:06:39 | ERROR    | services.news_monitor - News monitor error: no such table: news
+Traceback (most recent call last):
+
+  File "e:\API CALLS\ttd\ttd-assistant\app.py", line 143, in <module>
+    main()
+    └ <function main at 0x000002AA3F5C42C0>
+
+  File "e:\API CALLS\ttd\ttd-assistant\app.py", line 139, in main
+    asyncio.run(COMMANDS[sys.argv[1]]())
+    │       │   │        │   └ ['app.py', 'monitor-news']
+    │       │   │        └ <module 'sys' (built-in)>
+    │       │   └ {'login': <function cmd_login at 0x000002AA3F56BE20>, 'validate-session': <function cmd_validate_session at 0x000002AA3F56BF6...
+    │       └ <function run at 0x000002AA3DBB0EA0>
+    └ <module 'asyncio' from 'C:\\Users\\mosin\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 196, in run
+    return runner.run(main)
+           │      │   └ <coroutine object cmd_monitor_news at 0x000002AA3F357740>
+           │      └ <function Runner.run at 0x000002AA3DC40900>
+           └ <asyncio.runners.Runner object at 0x000002AA3F494590>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<cmd_monitor_news() running at e:\API CALLS\ttd\ttd-assistant\app.py:105> wait_for=<Future p...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000002AA3DC3A480>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000002AA3F494590>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000002AA3DC3A3E0>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000002AA3DC40220>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2060, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000002AA3DBB1D00>
+    └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000002AA407DF7C0>()>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000002AA407DF7C0>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000002AA407DF7C0>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000002AA407DF7C0>()>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\apscheduler\executors\base_py3.py", line 30, in run_coroutine_job
+    retval = await job.func(*job.args, **job.kwargs)
+                   │   │     │   │       │   └ <member 'kwargs' of 'Job' objects>
+                   │   │     │   │       └ <Job (id=news_monitor name=SchedulerService._wrap.<locals>.job)>
+                   │   │     │   └ <member 'args' of 'Job' objects>
+                   │   │     └ <Job (id=news_monitor name=SchedulerService._wrap.<locals>.job)>
+                   │   └ <member 'func' of 'Job' objects>
+                   └ <Job (id=news_monitor name=SchedulerService._wrap.<locals>.job)>
+
+  File "e:\API CALLS\ttd\ttd-assistant\services\scheduler_service.py", line 24, in job
+    await coro_fn()
+          └ <bound method NewsMonitor.check of <services.news_monitor.NewsMonitor object at 0x000002AA3F758AD0>>
+
+> File "e:\API CALLS\ttd\ttd-assistant\services\news_monitor.py", line 35, in check
+    known_titles = self._db.get_all_news_titles()
+                   │    │   └ <function DatabaseService.get_all_news_titles at 0x000002AA3ED16DE0>
+                   │    └ <services.database_service.DatabaseService object at 0x000002AA3F496BA0>
+                   └ <services.news_monitor.NewsMonitor object at 0x000002AA3F758AD0>
+
+  File "e:\API CALLS\ttd\ttd-assistant\services\database_service.py", line 97, in get_all_news_titles
+    rows = conn.execute("SELECT title FROM news").fetchall()
+           │    └ <method 'execute' of 'sqlite3.Connection' objects>
+           └ <sqlite3.Connection object at 0x000002AA3F79EC50>
+
+sqlite3.OperationalError: no such table: news
+2026-08-03 22:06:39 | ERROR    | services.scheduler_service - Scheduled job error [check]: no such table: events
+2026-08-03 22:06:58 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:06:58 | ERROR    | services.news_monitor - News monitor error: no such table: news
+Traceback (most recent call last):
+
+  File "E:\API CALLS\ttd\ttd-assistant\app.py", line 143, in <module>
+    main()
+    └ <function main at 0x000001D2CC3844A0>
+
+  File "E:\API CALLS\ttd\ttd-assistant\app.py", line 139, in main
+    asyncio.run(COMMANDS[sys.argv[1]]())
+    │       │   │        │   └ ['app.py', 'monitor-news']
+    │       │   │        └ <module 'sys' (built-in)>
+    │       │   └ {'login': <function cmd_login at 0x000001D2CC384040>, 'validate-session': <function cmd_validate_session at 0x000001D2CC38418...
+    │       └ <function run at 0x000001D2CA4C1080>
+    └ <module 'asyncio' from 'C:\\Users\\mosin\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 196, in run
+    return runner.run(main)
+           │      │   └ <coroutine object cmd_monitor_news at 0x000001D2CC113600>
+           │      └ <function Runner.run at 0x000001D2CA550AE0>
+           └ <asyncio.runners.Runner object at 0x000001D2CC218980>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<cmd_monitor_news() running at E:\API CALLS\ttd\ttd-assistant\app.py:105> wait_for=<Future p...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000001D2CA54A660>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000001D2CC218980>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000001D2CA54A5C0>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000001D2CA550400>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2060, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000001D2CA4C1EE0>
+    └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000001D2CD5A0730>()>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000001D2CD5A0730>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000001D2CD5A0730>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000001D2CD5A0730>()>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\apscheduler\executors\base_py3.py", line 30, in run_coroutine_job
+    retval = await job.func(*job.args, **job.kwargs)
+                   │   │     │   │       │   └ <member 'kwargs' of 'Job' objects>
+                   │   │     │   │       └ <Job (id=news_monitor name=SchedulerService._wrap.<locals>.job)>
+                   │   │     │   └ <member 'args' of 'Job' objects>
+                   │   │     └ <Job (id=news_monitor name=SchedulerService._wrap.<locals>.job)>
+                   │   └ <member 'func' of 'Job' objects>
+                   └ <Job (id=news_monitor name=SchedulerService._wrap.<locals>.job)>
+
+  File "E:\API CALLS\ttd\ttd-assistant\services\scheduler_service.py", line 24, in job
+    await coro_fn()
+          └ <bound method NewsMonitor.check of <services.news_monitor.NewsMonitor object at 0x000001D2CC50CAD0>>
+
+> File "E:\API CALLS\ttd\ttd-assistant\services\news_monitor.py", line 35, in check
+
+  File "E:\API CALLS\ttd\ttd-assistant\services\database_service.py", line 97, in get_all_news_titles
+    rows = conn.execute("SELECT title FROM news").fetchall()
+           │    └ <method 'execute' of 'sqlite3.Connection' objects>
+           └ <sqlite3.Connection object at 0x000001D2CC561F30>
+
+sqlite3.OperationalError: no such table: news
+2026-08-03 22:06:58 | ERROR    | services.scheduler_service - Scheduled job error [check]: no such table: events
+2026-08-03 22:07:09 | INFO     | __main__ - Stopping news monitor
+2026-08-03 22:07:09 | INFO     | services.scheduler_service - Scheduler stopped
+2026-08-03 22:07:12 | INFO     | services.database_service - Database initialized
+2026-08-03 22:07:14 | INFO     | services.scheduler_service - News monitor scheduled every 60s
+2026-08-03 22:07:14 | INFO     | services.scheduler_service - Cleanup job scheduled
+2026-08-03 22:07:14 | INFO     | services.scheduler_service - Scheduler started
+2026-08-03 22:07:14 | INFO     | __main__ - News monitor running. Press Ctrl+C to stop.
+2026-08-03 22:07:14 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:07:16 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:16 | INFO     | services.news_monitor - New news item detected: Angapradakshinam (Locals)
+2026-08-03 22:07:16 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:16 | INFO     | services.news_monitor - New news item detected: Sri Srinivasa Divyanugraha Visesha Homam
+2026-08-03 22:07:17 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:17 | INFO     | services.news_monitor - New news item detected: Local Temples
+2026-08-03 22:07:17 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:17 | INFO     | services.news_monitor - New news item detected: Sri Chennakesava Swamy Temple
+2026-08-03 22:07:18 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:18 | INFO     | services.news_monitor - New news item detected: Accommodation
+2026-08-03 22:07:18 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:18 | INFO     | services.news_monitor - New news item detected: Special Entry Darshan (Sri PAT)
+2026-08-03 22:07:19 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:19 | INFO     | services.news_monitor - New news item detected: Special Entry Darshan
+2026-08-03 22:07:19 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:19 | INFO     | services.news_monitor - New news item detected: Senior Citizens / Physically challenged 
+2026-08-03 22:07:20 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:20 | INFO     | services.news_monitor - New news item detected: Virtual Seva
+2026-08-03 22:07:20 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:20 | INFO     | services.news_monitor - New news item detected: Angapradakshinam
+2026-08-03 22:07:21 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:21 | INFO     | services.news_monitor - New news item detected: Seva E-Dip
+2026-08-03 22:07:22 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:22 | INFO     | services.news_monitor - New news item detected: Srivari Arjitha Seva
+2026-08-03 22:07:22 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:22 | INFO     | services.news_monitor - New news item detected: Srivari Seva
+2026-08-03 22:07:23 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:23 | INFO     | services.news_monitor - New news item detected: Srivari Seva for Locals
+2026-08-03 22:07:23 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:23 | INFO     | services.news_monitor - New news item detected: Srivari Trainer
+2026-08-03 22:07:24 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:24 | INFO     | services.news_monitor - New news item detected: SRIVANI Trust
+2026-08-03 22:07:24 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:24 | INFO     | services.news_monitor - New news item detected: Trusts/Schemes Donors
+2026-08-03 22:07:25 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:25 | INFO     | services.news_monitor - New news item detected: SRIVANI Booking update
+2026-08-03 22:07:26 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:26 | INFO     | services.news_monitor - New news item detected: To generate Digital passbook for the donations made before September 2016, pleas
+2026-08-03 22:07:26 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:26 | INFO     | services.news_monitor - New news item detected: The Advance booking Arjitha Seva ticket holders of Sahasrakalasabhishekam, Vishe
+2026-08-03 22:07:27 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:07:27 | INFO     | services.news_monitor - New news item detected: donor self service
+2026-08-03 22:07:38 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:08:14 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:08:34 | INFO     | services.news_monitor - Checking TTD news page
+2026-08-03 22:08:34 | INFO     | services.auth_service - Validating session
+2026-08-03 22:08:35 | ERROR    | services.auth_service - Session validation error: Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://ttdsevaonline.com/Home/Index
+Call log:
+  - navigating to "https://ttdsevaonline.com/Home/Index", waiting until "domcontentloaded"
+
+Traceback (most recent call last):
+
+  File "e:\API CALLS\ttd\ttd-assistant\app.py", line 147, in <module>
+
+  File "e:\API CALLS\ttd\ttd-assistant\app.py", line 143, in main
+    main()
+    └ <function main at 0x00000194BBC74720>
+
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 196, in run
+    return runner.run(main)
+           │      │   └ <coroutine object cmd_monitor_news at 0x00000194BBA07740>
+           │      └ <function Runner.run at 0x00000194BA2B09A0>
+           └ <asyncio.runners.Runner object at 0x00000194BBB446E0>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<cmd_monitor_news() running at e:\API CALLS\ttd\ttd-assistant\app.py:108> wait_for=<Future p...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x00000194BA2AA520>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x00000194BBB446E0>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x00000194BA2AA480>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x00000194BA2B02C0>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2060, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000194BA221DA0>
+    └ <Handle Task.task_wakeup()>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup()>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\apscheduler\executors\base_py3.py", line 30, in run_coroutine_job
+    retval = await job.func(*job.args, **job.kwargs)
+                   │   │     │   │       │   └ <member 'kwargs' of 'Job' objects>
+                   │   │     │   │       └ <Job (id=session_validator name=SchedulerService._wrap.<locals>.job)>
+                   │   │     │   └ <member 'args' of 'Job' objects>
+                   │   │     └ <Job (id=session_validator name=SchedulerService._wrap.<locals>.job)>
+                   │   └ <member 'func' of 'Job' objects>
+                   └ <Job (id=session_validator name=SchedulerService._wrap.<locals>.job)>
+
+  File "e:\API CALLS\ttd\ttd-assistant\services\scheduler_service.py", line 24, in job
+    await coro_fn()
+          └ <bound method SessionService.validate of <services.auth_service.SessionService object at 0x00000194BBE082F0>>
+
+> File "e:\API CALLS\ttd\ttd-assistant\services\auth_service.py", line 85, in validate
+    await dashboard.open()
+          │         └ <function DashboardPage.open at 0x00000194BB394FE0>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BBE03490>
+
+  File "e:\API CALLS\ttd\ttd-assistant\pages\dashboard_page.py", line 14, in open
+    await self.navigate(self._dashboard_url)
+          │    │        │    └ 'https://ttdsevaonline.com/Home/Index'
+          │    │        └ <pages.dashboard_page.DashboardPage object at 0x00000194BBE03490>
+          │    └ <function BasePage.navigate at 0x00000194BB395120>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BBE03490>
+
+  File "e:\API CALLS\ttd\ttd-assistant\pages\base_page.py", line 11, in navigate
+    await self.page.goto(url, wait_until="domcontentloaded")
+          │    │    │    └ 'https://ttdsevaonline.com/Home/Index'
+          │    │    └ <function Page.goto at 0x00000194BB3704A0>
+          │    └ <Page url='chrome-error://chromewebdata/'>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BBE03490>
+
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\async_api\_generated.py", line 8985, in goto
+    await self._impl_obj.goto(
+          │    │         └ <function Page.goto at 0x00000194BB307880>
+          │    └ <Page url='chrome-error://chromewebdata/'>
+          └ <Page url='chrome-error://chromewebdata/'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 551, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+                 │    │           │      └ <function locals_to_params at 0x00000194BB19FC40>
+                 │    │           └ <function Frame.goto at 0x00000194BB2D14E0>
+                 │    └ <Frame name= url='chrome-error://chromewebdata/'>
+                 └ <Page url='chrome-error://chromewebdata/'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 145, in goto
+    await self._channel.send("goto", locals_to_params(locals()))
+          │    │        │            └ <function locals_to_params at 0x00000194BB19FC40>
+          │    │        └ <function Channel.send at 0x00000194BB1E0AE0>
+          │    └ <playwright._impl._connection.Channel object at 0x00000194BD2FDE20>
+          └ <Frame name= url='chrome-error://chromewebdata/'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+                 │    │           └ <function Connection.wrap_api_call at 0x00000194BB1E2CA0>
+                 │    └ <playwright._impl._connection.Connection object at 0x00000194BBE09010>
+                 └ <playwright._impl._connection.Channel object at 0x00000194BD2FDE20>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+          │                       └ {'frames': [{'file': 'e:\\API CALLS\\ttd\\ttd-assistant\\pages\\base_page.py', 'line': 11, 'column': 0, 'function': 'Dashboar...
+          └ <function rewrite_error at 0x00000194BB1074C0>
+
+playwright._impl._errors.Error: Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://ttdsevaonline.com/Home/Index
+Call log:
+  - navigating to "https://ttdsevaonline.com/Home/Index", waiting until "domcontentloaded"
+
+2026-08-03 22:09:14 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:10:14 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:11:14 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:11:29 | INFO     | __main__ - Stopping news monitor
+2026-08-03 22:11:29 | INFO     | services.scheduler_service - Scheduler stopped
+2026-08-03 22:11:32 | INFO     | services.database_service - Database initialized
+2026-08-03 22:11:33 | INFO     | services.scheduler_service - News monitor scheduled every 60s
+2026-08-03 22:11:33 | INFO     | services.scheduler_service - Scheduler started
+2026-08-03 22:11:33 | INFO     | __main__ - News monitor running. Press Ctrl+C to stop.
+2026-08-03 22:11:33 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:11:38 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:11:57 | INFO     | __main__ - Stopping news monitor
+2026-08-03 22:11:57 | INFO     | services.scheduler_service - Scheduler stopped
+2026-08-03 22:11:59 | INFO     | services.database_service - Database initialized
+2026-08-03 22:12:00 | INFO     | services.scheduler_service - News monitor scheduled every 60s
+2026-08-03 22:12:00 | INFO     | services.scheduler_service - Scheduler started
+2026-08-03 22:12:00 | INFO     | __main__ - News monitor running. Press Ctrl+C to stop.
+2026-08-03 22:12:00 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:12:02 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:02 | INFO     | services.news_monitor - New news item detected: Angapradakshinam (Locals)
+2026-08-03 22:12:03 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:03 | INFO     | services.news_monitor - New news item detected: Sri Srinivasa Divyanugraha Visesha Homam
+2026-08-03 22:12:03 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:03 | INFO     | services.news_monitor - New news item detected: Local Temples
+2026-08-03 22:12:04 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:04 | INFO     | services.news_monitor - New news item detected: Sri Chennakesava Swamy Temple
+2026-08-03 22:12:04 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:04 | INFO     | services.news_monitor - New news item detected: Accommodation
+2026-08-03 22:12:05 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:05 | INFO     | services.news_monitor - New news item detected: Special Entry Darshan (Sri PAT)
+2026-08-03 22:12:06 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:06 | INFO     | services.news_monitor - New news item detected: Special Entry Darshan
+2026-08-03 22:12:06 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:06 | INFO     | services.news_monitor - New news item detected: Senior Citizens / Physically challenged 
+2026-08-03 22:12:07 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:07 | INFO     | services.news_monitor - New news item detected: Virtual Seva
+2026-08-03 22:12:07 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:07 | INFO     | services.news_monitor - New news item detected: Angapradakshinam
+2026-08-03 22:12:08 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:08 | INFO     | services.news_monitor - New news item detected: Seva E-Dip
+2026-08-03 22:12:08 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:08 | INFO     | services.news_monitor - New news item detected: Srivari Arjitha Seva
+2026-08-03 22:12:09 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:09 | INFO     | services.news_monitor - New news item detected: Srivari Seva
+2026-08-03 22:12:09 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:10 | INFO     | services.news_monitor - New news item detected: Srivari Seva for Locals
+2026-08-03 22:12:10 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:10 | INFO     | services.news_monitor - New news item detected: Srivari Trainer
+2026-08-03 22:12:11 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:11 | INFO     | services.news_monitor - New news item detected: SRIVANI Trust
+2026-08-03 22:12:11 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:11 | INFO     | services.news_monitor - New news item detected: Trusts/Schemes Donors
+2026-08-03 22:12:12 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:12 | INFO     | services.news_monitor - New news item detected: SRIVANI Booking update
+2026-08-03 22:12:12 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:12 | INFO     | services.news_monitor - New news item detected: To generate Digital passbook for the donations made before September 2016, pleas
+2026-08-03 22:12:13 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:13 | INFO     | services.news_monitor - New news item detected: The Advance booking Arjitha Seva ticket holders of Sahasrakalasabhishekam, Vishe
+2026-08-03 22:12:14 | INFO     | services.notification_service - Telegram notification sent
+2026-08-03 22:12:14 | INFO     | services.news_monitor - New news item detected: donor self service
+2026-08-03 22:12:38 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:13:00 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:13:34 | INFO     | services.news_monitor - Checking TTD news page
+2026-08-03 22:13:34 | INFO     | services.auth_service - Validating session
+2026-08-03 22:13:35 | ERROR    | services.auth_service - Session validation error: Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://ttdsevaonline.com/Home/Index
+Call log:
+  - navigating to "https://ttdsevaonline.com/Home/Index", waiting until "domcontentloaded"
+
+Traceback (most recent call last):
+
+  File "e:\API CALLS\ttd\ttd-assistant\app.py", line 147, in <module>
+    asyncio.run(COMMANDS[sys.argv[1]]())
+    │       │   │        │   └ ['app.py', 'monitor-news']
+    │       │   │        └ <module 'sys' (built-in)>
+    │       │   └ {'login': <function cmd_login at 0x00000194BBC742C0>, 'validate-session': <function cmd_validate_session at 0x00000194BBC7440...
+    │       └ <function run at 0x00000194BA220F40>
+    └ <module 'asyncio' from 'C:\\Users\\mosin\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\asyncio\\__init__.py'>
+
+  File "e:\API CALLS\ttd\ttd-assistant\app.py", line 143, in main
+    def main():
+        └ <function main at 0x00000194BBC74720>
+
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 196, in run
+    return runner.run(main)
+           │      │   └ <coroutine object cmd_monitor_news at 0x00000194BBA07740>
+           │      └ <function Runner.run at 0x00000194BA2B09A0>
+           └ <asyncio.runners.Runner object at 0x00000194BBB446E0>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<cmd_monitor_news() running at e:\API CALLS\ttd\ttd-assistant\app.py:108> wait_for=<Future p...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x00000194BA2AA520>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x00000194BBB446E0>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x00000194BA2AA480>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x00000194BA2B02C0>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2060, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000194BA221DA0>
+    └ <Handle Task.task_wakeup()>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup()>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\apscheduler\executors\base_py3.py", line 30, in run_coroutine_job
+    retval = await job.func(*job.args, **job.kwargs)
+                   │   │     │   │       │   └ <member 'kwargs' of 'Job' objects>
+                   │   │     │   │       └ <Job (id=session_validator name=SchedulerService._wrap.<locals>.job)>
+                   │   │     │   └ <member 'args' of 'Job' objects>
+                   │   │     └ <Job (id=session_validator name=SchedulerService._wrap.<locals>.job)>
+                   │   └ <member 'func' of 'Job' objects>
+                   └ <Job (id=session_validator name=SchedulerService._wrap.<locals>.job)>
+
+  File "e:\API CALLS\ttd\ttd-assistant\services\scheduler_service.py", line 24, in job
+    await coro_fn()
+          └ <bound method SessionService.validate of <services.auth_service.SessionService object at 0x00000194BBE082F0>>
+
+> File "e:\API CALLS\ttd\ttd-assistant\services\auth_service.py", line 85, in validate
+    await dashboard.open()
+          │         └ <function DashboardPage.open at 0x00000194BB394FE0>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BBE029E0>
+
+  File "e:\API CALLS\ttd\ttd-assistant\pages\dashboard_page.py", line 14, in open
+    await self.navigate(self._dashboard_url)
+          │    │        │    └ 'https://ttdsevaonline.com/Home/Index'
+          │    │        └ <pages.dashboard_page.DashboardPage object at 0x00000194BBE029E0>
+          │    └ <function BasePage.navigate at 0x00000194BB395120>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BBE029E0>
+
+  File "e:\API CALLS\ttd\ttd-assistant\pages\base_page.py", line 11, in navigate
+    await self.page.goto(url, wait_until="domcontentloaded")
+          │    │    │    └ 'https://ttdsevaonline.com/Home/Index'
+          │    │    └ <function Page.goto at 0x00000194BB3704A0>
+          │    └ <Page url='about:blank'>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BBE029E0>
+
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\async_api\_generated.py", line 8985, in goto
+    await self._impl_obj.goto(
+          │    │         └ <function Page.goto at 0x00000194BB307880>
+          │    └ <Page url='about:blank'>
+          └ <Page url='about:blank'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 551, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+                 │    │           │      └ <function locals_to_params at 0x00000194BB19FC40>
+                 │    │           └ <function Frame.goto at 0x00000194BB2D14E0>
+                 │    └ <Frame name= url='about:blank'>
+                 └ <Page url='about:blank'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 145, in goto
+    await self._channel.send("goto", locals_to_params(locals()))
+          │    │        │            └ <function locals_to_params at 0x00000194BB19FC40>
+          │    │        └ <function Channel.send at 0x00000194BB1E0AE0>
+          │    └ <playwright._impl._connection.Channel object at 0x00000194BD3470B0>
+          └ <Frame name= url='about:blank'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+                 │    │           └ <function Connection.wrap_api_call at 0x00000194BB1E2CA0>
+                 │    └ <playwright._impl._connection.Connection object at 0x00000194BBE09010>
+                 └ <playwright._impl._connection.Channel object at 0x00000194BD3470B0>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+          │                       └ {'frames': [{'file': 'e:\\API CALLS\\ttd\\ttd-assistant\\pages\\base_page.py', 'line': 11, 'column': 0, 'function': 'Dashboar...
+          └ <function rewrite_error at 0x00000194BB1074C0>
+
+playwright._impl._errors.Error: Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://ttdsevaonline.com/Home/Index
+Call log:
+  - navigating to "https://ttdsevaonline.com/Home/Index", waiting until "domcontentloaded"
+
+2026-08-03 22:14:00 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:14:28 | INFO     | __main__ - Stopping news monitor
+2026-08-03 22:14:28 | INFO     | services.scheduler_service - Scheduler stopped
+2026-08-03 22:14:31 | INFO     | services.database_service - Database initialized
+2026-08-03 22:14:33 | INFO     | services.scheduler_service - News monitor scheduled every 60s
+2026-08-03 22:14:33 | INFO     | services.scheduler_service - Scheduler started
+2026-08-03 22:14:33 | INFO     | __main__ - News monitor running. Press Ctrl+C to stop.
+2026-08-03 22:14:33 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:15:33 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:15:50 | INFO     | __main__ - Stopping news monitor
+2026-08-03 22:15:50 | INFO     | services.scheduler_service - Scheduler stopped
+2026-08-03 22:15:52 | INFO     | services.database_service - Database initialized
+2026-08-03 22:15:53 | INFO     | services.scheduler_service - News monitor scheduled at 10:00 AM and 2:30 PM daily
+2026-08-03 22:15:53 | INFO     | services.scheduler_service - Scheduler started
+2026-08-03 22:15:53 | INFO     | __main__ - News monitor running. Press Ctrl+C to stop.
+2026-08-03 22:15:53 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:16:38 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:17:38 | INFO     | services.news_monitor - Checking TTD news API
+2026-08-03 22:18:34 | INFO     | services.news_monitor - Checking TTD news page
+2026-08-03 22:18:34 | INFO     | services.auth_service - Validating session
+2026-08-03 22:18:36 | ERROR    | services.auth_service - Session validation error: Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://ttdsevaonline.com/Home/Index
+Call log:
+  - navigating to "https://ttdsevaonline.com/Home/Index", waiting until "domcontentloaded"
+
+Traceback (most recent call last):
+
+  File "e:\API CALLS\ttd\ttd-assistant\app.py", line 147, in <module>
+    asyncio.run(COMMANDS[sys.argv[1]]())
+    │       │   │        │   └ ['app.py', 'monitor-news']
+    │       │   │        └ <module 'sys' (built-in)>
+    │       │   └ {'login': <function cmd_login at 0x00000194BBC742C0>, 'validate-session': <function cmd_validate_session at 0x00000194BBC7440...
+    │       └ <function run at 0x00000194BA220F40>
+    └ <module 'asyncio' from 'C:\\Users\\mosin\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\asyncio\\__init__.py'>
+
+  File "e:\API CALLS\ttd\ttd-assistant\app.py", line 143, in main
+    def main():
+        └ <function main at 0x00000194BBC74720>
+
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 196, in run
+    return runner.run(main)
+           │      │   └ <coroutine object cmd_monitor_news at 0x00000194BBA07740>
+           │      └ <function Runner.run at 0x00000194BA2B09A0>
+           └ <asyncio.runners.Runner object at 0x00000194BBB446E0>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<cmd_monitor_news() running at e:\API CALLS\ttd\ttd-assistant\app.py:108> wait_for=<Future p...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x00000194BA2AA520>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x00000194BBB446E0>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x00000194BA2AA480>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x00000194BA2B02C0>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2060, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000194BA221DA0>
+    └ <Handle Task.task_wakeup()>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup()>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\apscheduler\executors\base_py3.py", line 30, in run_coroutine_job
+    retval = await job.func(*job.args, **job.kwargs)
+                   │   │     │   │       │   └ <member 'kwargs' of 'Job' objects>
+                   │   │     │   │       └ <Job (id=session_validator name=SchedulerService._wrap.<locals>.job)>
+                   │   │     │   └ <member 'args' of 'Job' objects>
+                   │   │     └ <Job (id=session_validator name=SchedulerService._wrap.<locals>.job)>
+                   │   └ <member 'func' of 'Job' objects>
+                   └ <Job (id=session_validator name=SchedulerService._wrap.<locals>.job)>
+
+  File "e:\API CALLS\ttd\ttd-assistant\services\scheduler_service.py", line 24, in job
+    await coro_fn()
+          └ <bound method SessionService.validate of <services.auth_service.SessionService object at 0x00000194BBE082F0>>
+
+> File "e:\API CALLS\ttd\ttd-assistant\services\auth_service.py", line 85, in validate
+    await dashboard.open()
+          │         └ <function DashboardPage.open at 0x00000194BB394FE0>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BD3517F0>
+
+  File "e:\API CALLS\ttd\ttd-assistant\pages\dashboard_page.py", line 14, in open
+    await self.navigate(self._dashboard_url)
+          │    │        │    └ 'https://ttdsevaonline.com/Home/Index'
+          │    │        └ <pages.dashboard_page.DashboardPage object at 0x00000194BD3517F0>
+          │    └ <function BasePage.navigate at 0x00000194BB395120>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BD3517F0>
+
+  File "e:\API CALLS\ttd\ttd-assistant\pages\base_page.py", line 11, in navigate
+    await self.page.goto(url, wait_until="domcontentloaded")
+          │    │    │    └ 'https://ttdsevaonline.com/Home/Index'
+          │    │    └ <function Page.goto at 0x00000194BB3704A0>
+          │    └ <Page url='chrome-error://chromewebdata/'>
+          └ <pages.dashboard_page.DashboardPage object at 0x00000194BD3517F0>
+
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\async_api\_generated.py", line 8985, in goto
+    await self._impl_obj.goto(
+          │    │         └ <function Page.goto at 0x00000194BB307880>
+          │    └ <Page url='chrome-error://chromewebdata/'>
+          └ <Page url='chrome-error://chromewebdata/'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 551, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+                 │    │           │      └ <function locals_to_params at 0x00000194BB19FC40>
+                 │    │           └ <function Frame.goto at 0x00000194BB2D14E0>
+                 │    └ <Frame name= url='chrome-error://chromewebdata/'>
+                 └ <Page url='chrome-error://chromewebdata/'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 145, in goto
+    await self._channel.send("goto", locals_to_params(locals()))
+          │    │        │            └ <function locals_to_params at 0x00000194BB19FC40>
+          │    │        └ <function Channel.send at 0x00000194BB1E0AE0>
+          │    └ <playwright._impl._connection.Channel object at 0x00000194BD345BE0>
+          └ <Frame name= url='chrome-error://chromewebdata/'>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+                 │    │           └ <function Connection.wrap_api_call at 0x00000194BB1E2CA0>
+                 │    └ <playwright._impl._connection.Connection object at 0x00000194BBE09010>
+                 └ <playwright._impl._connection.Channel object at 0x00000194BD345BE0>
+  File "C:\Users\mosin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+          │                       └ {'frames': [{'file': 'e:\\API CALLS\\ttd\\ttd-assistant\\pages\\base_page.py', 'line': 11, 'column': 0, 'function': 'Dashboar...
+          └ <function rewrite_error at 0x00000194BB1074C0>
+
+playwright._impl._errors.Error: Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://ttdsevaonline.com/Home/Index
+Call log:
+  - navigating to "https://ttdsevaonline.com/Home/Index", waiting until "domcontentloaded"
+
+2026-08-03 22:19:59 | INFO     | __main__ - Stopping news monitor
+2026-08-03 22:19:59 | INFO     | services.scheduler_service - Scheduler stopped
