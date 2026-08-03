@@ -11,7 +11,7 @@ urls:
   login: "https://ttdsevaonline.com/Account/Login"
   dashboard: "https://ttdsevaonline.com/Home/Index"
   srivari_seva: "https://ttdsevaonline.com/GeneralSrivariSeva"
-  news_api: "https://<your-github-username>.github.io/<your-repo-name>/news.json"
+  news_api: "https://raw.githubusercontent.com/myalgofax/ttdupdates/main/docs/news.json"
 
 polling:
   default_interval: 60
