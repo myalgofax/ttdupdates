@@ -51,5 +51,8 @@ class NewsMonitor:
                     logger.info(f"New news item detected: {title}")
 
         except Exception as e:
-            logger.exception(f"News monitor error: {e}")
-            self._db.save_event(Event(event_type=EventType.ERROR, message=f"News monitor error: {e}"))
+            logger.error(f"News monitor error: {e}")
+            try:
+                self._db.save_event(Event(event_type=EventType.ERROR, message=str(e)))
+            except Exception:
+                pass
