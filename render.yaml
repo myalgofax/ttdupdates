@@ -1,8 +1,9 @@
 services:
   - type: worker
     name: ttd-news-monitor
-    runtime: docker
-    dockerfilePath: ./Dockerfile
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py monitor-news
     envVars:
       - key: TELEGRAM_BOT_TOKEN
         sync: false
