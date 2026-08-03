@@ -41,6 +41,7 @@ async def cmd_monitor_news():
     news = NewsMonitor(config, db, notifications)
     scheduler = SchedulerService(config)
     scheduler.add_news_monitor(news.check)
+    scheduler.add_self_ping(f"https://ttdupdates-3.onrender.com")
     scheduler.start()
     logger.info("News monitor running. Press Ctrl+C to stop.")
     try:

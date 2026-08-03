@@ -27,6 +27,18 @@ class SchedulerService:
         self._scheduler.add_job(self._wrap(check_fn), CronTrigger(hour=14, minute=30), id="news_monitor_pm")
         logger.info("News monitor scheduled at 10:00 AM and 2:30 PM daily")
 
+    def add_self_ping(self, url: str) -> None:
+        async def ping():
+            try:
+                import httpx
+                async with httpx.AsyncClient(timeout=10) as client:
+                    await client.get(url)
+                logger.debug("Self ping OK")
+            except Exception:
+                pass
+        self._scheduler.add_job(self._wrap(ping), CronTrigger(minute="*/10"), id="self_ping")
+        logger.info("Self ping scheduled every 10 minutes")
+
     def start(self) -> None:
         self._scheduler.start()
         logger.info("Scheduler started")
