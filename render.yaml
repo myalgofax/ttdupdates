@@ -1,0 +1,16 @@
+services:
+  - type: worker
+    name: ttd-news-monitor
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: TZ
+        value: Asia/Kolkata
+    disk:
+      name: ttd-data
+      mountPath: /app/database
+      sizeGB: 1
