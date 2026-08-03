@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import asyncio
+import os
 import sys
 from pathlib import Path
+from threading import Thread
+from http.server import HTTPServer, BaseHTTPRequestHandler
 
 from loguru import logger
 
@@ -16,7 +19,21 @@ from utils.logger import setup_logger
 BASE_DIR = Path(__file__).resolve().parent
 
 
+def _start_health_server():
+    class Handler(BaseHTTPRequestHandler):
+        def do_GET(self):
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write(b"OK")
+        def log_message(self, *args):
+            pass
+    port = int(os.getenv("PORT", 8080))
+    Thread(target=lambda: HTTPServer(("", port), Handler).serve_forever(), daemon=True).start()
+    logger.info(f"Health server started on port {port}")
+
+
 async def cmd_monitor_news():
+    _start_health_server()
     config = load_config()
     setup_logger(config.logging.level, config.logging.rotation, config.logging.retention)
     db = DatabaseService(str(BASE_DIR / config.database.path))
