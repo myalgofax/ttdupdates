@@ -45,6 +45,7 @@ async def cmd_monitor_news():
     logger.info("News monitor running. Press Ctrl+C to stop.")
     try:
         try:
+            await asyncio.sleep(5)  # wait for network to be ready
             await news.check()
         except Exception as e:
             logger.warning(f"Initial check failed, will retry on schedule: {e}")
