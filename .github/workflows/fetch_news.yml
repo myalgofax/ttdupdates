@@ -17,10 +17,15 @@ jobs:
 
       - name: Fetch TTD News API
         run: |
-          curl -s "https://ttdevasthanams.ap.gov.in/cms/api/universal-latest-updates?populate=*" \
-            -H "User-Agent: Mozilla/5.0" \
-            -H "Accept: application/json" \
+          curl -v "https://ttdevasthanams.ap.gov.in/cms/api/universal-latest-updates?populate=*" \
+            -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+            -H "Accept: application/json, text/plain, */*" \
+            -H "Accept-Language: en-US,en;q=0.9" \
+            -H "Referer: https://ttdevasthanams.ap.gov.in/" \
+            -H "Origin: https://ttdevasthanams.ap.gov.in" \
             -o docs/news.json
+          echo "File size: $(wc -c < docs/news.json) bytes"
+          cat docs/news.json | head -c 200
 
       - name: Commit and push
         run: |
