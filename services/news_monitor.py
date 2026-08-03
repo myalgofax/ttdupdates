@@ -26,14 +26,9 @@ class NewsMonitor:
         logger.info("Checking TTD news API")
         try:
             async with httpx.AsyncClient(timeout=30) as client:
-                resp = await client.get(
-                    self._config.urls.news_api,
-                    headers={
-                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-                        "Accept": "application/json",
-                        "Referer": "https://ttdevasthanams.ap.gov.in/",
-                    }
-                )
+                resp = await client.get(self._config.urls.news_api)
+                resp.raise_for_status()
+                data = resp.json()
                 resp.raise_for_status()
                 data = resp.json()
 

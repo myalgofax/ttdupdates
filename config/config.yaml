@@ -11,7 +11,7 @@ urls:
   login: "https://ttdsevaonline.com/Account/Login"
   dashboard: "https://ttdsevaonline.com/Home/Index"
   srivari_seva: "https://ttdsevaonline.com/GeneralSrivariSeva"
-  news_api: "https://ttdevasthanams.ap.gov.in/cms/api/universal-latest-updates?populate=*"
+  news_api: "https://<your-github-username>.github.io/<your-repo-name>/news.json"
 
 polling:
   default_interval: 60
